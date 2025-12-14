@@ -1,0 +1,70 @@
+# Dependencies
+node_modules/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment files (มี secrets)
+.env
+.env.local
+.env.production
+*.env
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker volumes
+postgres_data/
+
+# Large files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.dylib
+*.so
+*.dll
+
+# Model files (ถ้าใหญ่เกิน)
+*.pkl
+*.h5
+*.model
+*.pt
+*.pth
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+
+# Test coverage
+coverage/
+.coverage
+htmlcov/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Reports (generated files)
+reports/*.pdf
