@@ -1,0 +1,12 @@
+# Large files
+*.zip
+*.dylib
+
+# Dependencies
+node_modules/
+venv/
+__pycache__/
+*.pyc
+
+# Environment
+.env
