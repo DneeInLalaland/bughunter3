@@ -1,0 +1,49 @@
+
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: vulnuser
+      POSTGRES_PASSWORD: vulnpass123
+      POSTGRES_DB: vulnscanner
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  scanner:
+    build: ./scanner
+    ports:
+      - "5002:5001"
+
+  ml:
+    build: ./ml-model
+    ports:
+      - "5003:5003"
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://vulnuser:vulnpass123@db:5432/vulnscanner
+      - SCANNER_URL=http://scanner:5001
+      - ML_URL=http://ml:5003
+    depends_on:
+      - db
+      - scanner
+      - ml
+
+
+frontend:
+  build:
+    context: ./frontend
+    dockerfile: Dockerfile
+  ports:
+    - "3000:3000"
+  depends_on:
+    - backend
+
+
+volumes:
+  postgres_data:
